@@ -52,6 +52,8 @@ breads.get('/:id', (request, response) =>
     Bread.findById(request.params.id)
     .then(foundBread => 
     {
+      const bakedBy = foundBread.getBakedBy()
+      console.log(bakedBy)
         response.render('showBreadInfo', 
         {
             bread: foundBread,
@@ -59,6 +61,7 @@ breads.get('/:id', (request, response) =>
         });
     })
     .catch(err => {
+      console.error(err);
       response.status(404).send('<h1> 404 Page not Found </h1>');
     })
 });

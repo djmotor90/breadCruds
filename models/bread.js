@@ -11,8 +11,15 @@ const breadSchema = new Schema(
       baker: {type: String, enum:['Rachel','Monica','Joey','Chandler','Ross','Phoebe']}  
   }
 );
+
+// helper methods 
+breadSchema.methods.getBakedBy = function(){
+  return `${this.name} was baked with love by ${this.baker}`
+}
+
 //Purpose: Use said schema to creat a model 
 const Bread = mongoose.model('Bread', breadSchema);
+
 
 
 module.exports = Bread;

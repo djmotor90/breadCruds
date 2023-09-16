@@ -14,11 +14,11 @@ function Default(html) {
       <nav id = 'topNav'>
         <div id = "LHS">
           <img id="breadLogo" src = "/assets/breadIcon.png" alt="breadLogo"></img>
-          <span> BreadCRUD: A Bakery Site  </span>
+          <span id="slogan">BreadCRUD: Where Code Meets the Oven</span>
         </div>
         <ul>
-            <li> <a href = "/breads"> Index of Breads</a></li>
-            <li> <a href = "/"> Bake a Loaf </a> </li>
+            <li> <a href = "/breads"> Inventory of Breads</a></li>
+            <li> <a href = "/"> Bake a Bread </a> </li>
         </ul>
       </nav>
       <div className="wrapper">

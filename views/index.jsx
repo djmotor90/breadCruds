@@ -5,7 +5,7 @@ function Index ({breadsData, title}) {
     return (
       <Default>
         {/* This is a JSX comment */}
-        <h2>Index Page</h2>
+        <h2>Inventory Page</h2>
         <ul>
             {
                 breadsData.map((bread, index) =>
