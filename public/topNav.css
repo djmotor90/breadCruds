@@ -1,56 +1,55 @@
 /* Navbar CSS */
-#topNav
-{
+#topNav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
-    background-color: darkcyan;
-    margin: 0px;
-    padding: 5px;
+    align-items: center;
+    background-color: rgb(25, 139, 0);
+    margin: 0;
+    padding: 10px;
+    box-shadow: 0 4px 2px -2px gray; /* Adds a shadow under the navbar for a lifted effect */
 }
-#LHS
-{
+
+#LHS {
     display: flex;
-    margin: 0px;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: end;
+    margin: 0;
+    align-items: center; /* Aligns items centrally rather than at the end */
 }
-#LHS span
-{
+
+#LHS span {
     color: aliceblue;
     font-size: 30px;
     margin-left: 30px;
-}
-#breadLogo
-{
-    width: 50px;
-    height: 50px;
+    font-weight: 700; /* Makes the font a bit bolder */
 }
 
-#topNav ul
-{
+#breadLogo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Adds rounded corners to make a circle */
+}
+
+#topNav ul {
     display: flex;
-    margin: 0px;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: end;
-    padding: 0px;
+    margin: 0;
+    align-items: center; /* Aligns items centrally rather than at the end */
+    padding: 0;
     list-style: none;
 }
-#topNav li
-{
-    margin: 0px 20px;
+
+#topNav li {
+    margin: 0 20px;
     color: aliceblue;
-    font-size: 30px;
+    font-size: 20px; /* Reduced the font size for a more modern look */
 }
-#topNav a
-{
-    color: aliceblue;   
+
+#topNav a {
+    color: aliceblue;
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Adds a transition effect on hover */
 }
-#topNav a:hover
-{
+
+#topNav a:hover {
     color: greenyellow;
-    text-decoration: underline;   
+    text-decoration: underline;
 }
