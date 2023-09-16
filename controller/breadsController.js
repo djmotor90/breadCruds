@@ -10,7 +10,7 @@ const Bread = require('../models/bread.js');
 // Static Routes first
 breads.get('/', (request, response) =>
 {
-  //Search the collection for all breads
+  //Search the collection for all  breads
   Bread.find()
     .then(foundBreads => {
       response.render('index',
