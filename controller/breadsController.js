@@ -8,7 +8,7 @@ const breads   = express.Router();
 const Bread = require('../models/bread.js');
 
 // Static Routes first
-breads.get('/', (request, response) => 
+breads.get('/', (request, response) =>
 {
   //Search the collection for all breads
   Bread.find()
