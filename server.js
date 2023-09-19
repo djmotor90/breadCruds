@@ -40,15 +40,18 @@ app.get('/', (request,response) =>
 
 //Dynamic routes
 
-//Breads Controller
-app.use('/breads', require('./controller/breadsController.js'));
+// breads
+const breadsController = require('./controller/breadsController.js')
+app.use('/breads', breadsController)
 
-//Catch all route
-app.get('*', (request,response) =>
-{
-    //chain together the sent HTML and the HTTP status
-    response.status(404).send('<h1> 404 Page not Found </h1>');
-});
+// bakers 
+const bakers_controller = require('./controller/bakers_controller.js')
+app.use('/bakers', bakers_controller)
+
+// 404 Page
+app.get('*', (req, res) => {
+  res.send('404')
+})
 
 
 //Connect to your mongodb and listen on port given by env

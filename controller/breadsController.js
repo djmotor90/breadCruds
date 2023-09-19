@@ -2,24 +2,27 @@
 const express  = require('express');
 //Intialize the router of breads
 const breads   = express.Router();
-
+// somewhere at the top with the other dependencies 
+const Baker = require('../models/baker.js')
 
 // Load in Data from models
 const Bread = require('../models/bread.js');
 
-// Static Routes first
-breads.get('/', (request, response) =>
-{
-  //Search the collection for all  breads
-  Bread.find()
-    .then(foundBreads => {
-      response.render('index',
-      {
-          breadsData : foundBreads,
-          title : 'Bread Inventory List'
-      });
+// Index:
+breads.get('/', (req, res) => {
+  Baker.find()
+    .then(foundBakers => {
+      Bread.find()
+      .then(foundBreads => {
+          res.render('index', {
+              breadsData: foundBreads,
+              bakers: foundBakers,
+              title: 'Index Page'
+          })
+      })
     })
-});
+})
+
 
 breads.post('/', (request,response) =>
 {
@@ -40,16 +43,25 @@ breads.post('/', (request,response) =>
 });
 
 
-breads.get('/new', (request, response) => 
-{
-    response.render('newBread');
-});
+
+
+// in the new route
+breads.get('/new', (req, res) => {
+    Baker.find()
+        .then(foundBakers => {
+            res.render('new', {
+                bakers: foundBakers
+            })
+      })
+})
+
 
 //Dynamic Routes
 //Purpose: show the information for every existing bread
 breads.get('/:id', (request, response) => 
 {
     Bread.findById(request.params.id)
+    .populate('baker')
     .then(foundBread => 
     {
       const bakedBy = foundBread.getBakedBy()
@@ -96,15 +108,18 @@ breads.put('/:id', (request, response) =>
 // EDIT
 breads.get('/:id/edit', (request, response) => 
 {
+  Baker.find()
+  .then(foundBakers => {
   Bread.findById(request.params.id)
   .then(foundBread => 
   {
       response.render('editPage', 
       {
           bread: foundBread,
-          title: 'Bread Entry: ' + foundBread.name + "Edit"
+          bakers: foundBakers
       });
   })
+})
   .catch(err => {
     response.status(404).send('<h1> 404 Page not Found </h1>');
   })
